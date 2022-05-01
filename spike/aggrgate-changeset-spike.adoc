@@ -1,0 +1,28 @@
+= aggregate-frameworks 聚合根变更集合调研
+
+== 目标
+
+
+== 调查范围
+
+== 调查内容
+
+=== 模块内的包的依赖关系
+
+=== org.aggregateframework.entity
+
+=== org.aggregateframework.dao
+
+=== org.aggregateframework.session
+
+=== org.aggregateframework.repository
+
+== 改造思路
+
+=== 与期望的差异
+
+==== 可以复用的地方
+
+==== 需要改造的地方
+
+=== 改造计划
