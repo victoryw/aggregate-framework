@@ -5,11 +5,11 @@
   <parent>
     <groupId>org.aggregateframework</groupId>
     <artifactId>aggregate-framework</artifactId>
-    <version>3.3.13-SNAPSHOT</version>
+    <version>3.3.17-SNAPSHOT</version>
   </parent>
   <groupId>org.aggregateframework</groupId>
   <artifactId>aggregate-framework-bom</artifactId>
-  <version>3.3.13-SNAPSHOT</version>
+  <version>3.3.17-SNAPSHOT</version>
   <packaging>pom</packaging>
   <dependencyManagement>
     <dependencies>

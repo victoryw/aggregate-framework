@@ -5,12 +5,12 @@
   <parent>
     <groupId>org.aggregateframework</groupId>
     <artifactId>aggregate-framework-parent</artifactId>
-    <version>3.3.13-SNAPSHOT</version>
+    <version>3.3.17-SNAPSHOT</version>
     <relativePath>../aggregate-framework-parent/pom.xml</relativePath>
   </parent>
   <groupId>org.aggregateframework</groupId>
   <artifactId>aggregate-framework-spring</artifactId>
-  <version>3.3.13-SNAPSHOT</version>
+  <version>3.3.17-SNAPSHOT</version>
   <dependencies>
     <dependency>
       <groupId>org.aggregateframework</groupId>

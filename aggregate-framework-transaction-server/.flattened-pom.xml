@@ -5,12 +5,12 @@
   <parent>
     <groupId>org.aggregateframework</groupId>
     <artifactId>aggregate-framework-parent</artifactId>
-    <version>3.3.13-SNAPSHOT</version>
+    <version>3.3.17-SNAPSHOT</version>
     <relativePath>../aggregate-framework-parent/pom.xml</relativePath>
   </parent>
   <groupId>org.aggregateframework</groupId>
   <artifactId>aggregate-framework-transaction-server</artifactId>
-  <version>3.3.13-SNAPSHOT</version>
+  <version>3.3.17-SNAPSHOT</version>
   <dependencies>
     <dependency>
       <groupId>org.aggregateframework</groupId>
@@ -65,8 +65,8 @@
       <artifactId>spring-boot-starter-data-redis</artifactId>
       <exclusions>
         <exclusion>
-          <artifactId>lettuce-core</artifactId>
           <groupId>io.lettuce</groupId>
+          <artifactId>lettuce-core</artifactId>
         </exclusion>
       </exclusions>
     </dependency>

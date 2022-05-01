@@ -5,11 +5,11 @@
   <parent>
     <groupId>org.aggregateframework.ha</groupId>
     <artifactId>aggregate-framework-ha</artifactId>
-    <version>3.3.13-SNAPSHOT</version>
+    <version>3.3.17-SNAPSHOT</version>
   </parent>
   <groupId>org.aggregateframework.ha</groupId>
   <artifactId>aggregate-framework-ha-spring</artifactId>
-  <version>3.3.13-SNAPSHOT</version>
+  <version>3.3.17-SNAPSHOT</version>
   <dependencies>
     <dependency>
       <groupId>org.springframework</groupId>
