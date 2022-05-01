@@ -1,0 +1,22 @@
+@startuml
+package "org.aggregateframework.entity" {}
+package "org.aggregateframework.dao" {}
+package "org.aggregateframework.session" {}
+package "org.aggregateframework.repository" {}
+package "org.aggregateframework.utils" {}
+
+
+"org.aggregateframework.dao" --> "org.aggregateframework.entity"
+"org.aggregateframework.session" --> "org.aggregateframework.entity"
+"org.aggregateframework.utils" --> "org.aggregateframework.entity"
+"org.aggregateframework.repository" --> "org.aggregateframework.entity"
+"org.aggregateframework.repository" --> "org.aggregateframework.dao"
+"org.aggregateframework.repository" --> "org.aggregateframework.session"
+"org.aggregateframework.repository" --> "org.aggregateframework.utils"
+
+'org.aggregateframework.entity
+'org.aggregateframework.dao
+'org.aggregateframework.session
+'org.aggregateframework.repository
+@enduml
+
