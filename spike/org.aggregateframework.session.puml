@@ -1,0 +1,63 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class AggregateEntry {
+Collection<T> aggregateRoots
+SaveAggregateCallback<T> callback
+
+void saveAggregate()
+Queue<AggregateEntry> getChildren()
+}
+
+interface ClientSession {
+    void registerAggregate(AggregateEntry<T> aggregateEntry)
+    void flush()
+    void commit()
+    void rollback()
+    T registerOriginalCopy(T entity)
+    T findOriginalCopy(Class<T> aggregateType, ID identifier)
+}
+AggregateEntry <.. ClientSession
+
+abstract class AbstractClientSession {
+}
+
+ClientSession <|.. AbstractClientSession
+AbstractClientSession *-- AggregateEntry
+
+class UnitOfWork
+AbstractClientSession <|.. UnitOfWork
+
+interface SessionFactory {
+    ClientSession requireClientSession();
+
+    void closeClientSession();
+
+    void registerNewClientSession();
+
+    boolean registerClientSessionIfAbsent();
+
+    boolean hasClientSessions();
+
+    int clientSessionCount();
+}
+ClientSession <.. SessionFactory
+
+class LocalSessionFactory
+SessionFactory <|.. LocalSessionFactory
+UnitOfWork <... LocalSessionFactory: create
+
+class SessionFactoryHelper {
+  void registerNewClientSession()
+  boolean registerClientSessionIfAbsent()
+  startNewSessionFactory()
+}
+SessionFactoryHelper <.. AbstractClientSession
+LocalSessionFactory <... SessionFactoryHelper: create
+
+
+
+
+
+
+@enduml

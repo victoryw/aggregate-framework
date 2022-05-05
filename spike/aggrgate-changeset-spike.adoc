@@ -81,8 +81,46 @@ image::org.aggregateframewor.entity.png[]
 
 === org.aggregateframework.dao
 
+image::org.aggregateframework.dao.png[]
+
 
 === org.aggregateframework.session
+image::org.aggregateframework.session.png[]
+
+这个包下，核心的类是AggregateEntry和AbstractClientSession
+
+* AggregateEntry 记录了待持久化的聚合根，以及持久化聚合根的具体操作SaveAggregateCallback
+
+* AbstractClientSession的 flush 和 commit 方法实现了对在 session 范围内变更的聚合根的持久化调度
+
+* SessionFactoryHelper是用来管理当前线程中的session的，暂时先不关注
+
+==== AggregateEntry
+
+|===
+|属性 |描述
+
+|aggregateRoots
+|调用 `Repository.save` 保存的一批同一类聚合根
+
+|callback
+|类型为 `SaveAggregateCallback<T>`，记录这一类聚合根持久化的具体实现
+|===
+
+
+==== AbstractClientSession/UnitOfWork
+
+`AbstractClientSession` 的关键实现:
+
+* `recursiveCommit` ：`recursiveCommit` 会触发执行 `session` 的 `currentAggregateQueue` 中的 `AggregateEntry` 的持久化
+* `findOriginalCopy` ： 提供在聚合根的原始快照，原始快照在聚合根被从数据库中检索出来或者新创建的聚合根在持久化时创建
+
+
+`UnitOfWork` 是 `AbstractClientSession` 的扩展：
+
+* `registerAggregate` 实现了 `AbstractClientSession` 没有实现的注册变更聚合根的功能，将 `aggregateEntry` 加入到 `currentAggregateQueue` 中。
+
+
 
 === org.aggregateframework.repository
 

@@ -1,0 +1,41 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+interface DomainObjectDao {
+    int insert(T entity)
+
+    int delete(T entity)
+
+    int update(T entity)
+
+    T findById(ID id)
+}
+
+interface CollectiveDomainObjectDao {
+    int insertAll(Collection<T> entities);
+
+    int deleteAll(Collection<T> entities);
+
+    int updateAll(Collection<T> entities);
+
+    List<T> findByIds(Collection<ID> ids);
+}
+DomainObjectDao <|-- CollectiveDomainObjectDao
+
+interface AggregateRootDao {
+
+    List<T> findAll();
+
+    long count();
+}
+
+interface CollectiveAggregateRootDao {
+
+}
+
+AggregateRootDao <|-- CollectiveAggregateRootDao
+CollectiveDomainObjectDao <|-- CollectiveAggregateRootDao
+
+@enduml
+
