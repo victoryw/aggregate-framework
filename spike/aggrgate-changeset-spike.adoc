@@ -38,9 +38,12 @@ Martin Fowler 在 《企业应用架构模式》提到了通过使用 工作单�
 * 聚合根内所有被删除的对象，子对象，子子对象
 
 
-== 调查范围
+== 调查对象
+在 GitHub 上, 我找到了一个前人一直在更新维护的**aggregate-frameworks** <https://github.com/changmingxie/aggregate-framework> 用于 DDD 代码实践的多个层面，按照 "org.aggregateframework.sample.complexmodel" 包内的测试表明，aggregate-frameworks 已经通过实现工作单元控制器机制完成了复杂包结构的 CRUD。
 
-== 调查内容
+== 调查范围
+**aggregate-frameworks** 不只实现了 聚合根的存取，同时还有领域事件的发布和存储，事务管理等一系列功能。
+当前重点在于调查出这个框架如何能自动获取到聚合根内的变化，并且按照实体进行持久化的。
 
 === 模块内的包的依赖关系
 
@@ -49,7 +52,35 @@ image::target_scope.png[]
 
 === org.aggregateframework.entity
 
+image::org.aggregateframewor.entity.png[]
+
+
+|===
+|名称 |功能
+
+|DomainObject
+|声明一个实体的能力，对外提供ID信息，并记录当前实体是否被持久化；
+
+|AggregateRoot
+|声明一个聚合根的能力，记录聚合根是否被删除
+
+|AbstractDomainObject
+|实体的抽象定义
+
+|AbstractAggregateRoot
+|聚合根的抽象定义，聚合根也是一个实体
+
+|AbstractSimpleDomainObject
+|实体的抽象实现，感觉没啥用
+
+|AbstractSimpleAggregateRoot
+|聚合根的抽象实现，感觉没啥用
+|===
+
+
+
 === org.aggregateframework.dao
+
 
 === org.aggregateframework.session
 
